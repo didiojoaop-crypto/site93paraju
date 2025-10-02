@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Presente — Mensagem</title>
+  <style>
+    :root{
+      --bg: #ffd7ea;
+      --accent: #ff6b9a;
+      --text: #2b2b2b;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+    body{
+      background: linear-gradient(180deg,var(--bg),#ffe0f3);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+    }
+    .wrap{
+      width:100%;
+      max-width:700px;
+      background:#ffffffcc;
+      border-radius:14px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.09);
+      padding:30px;
+      text-align:center;
+      position:relative;
+    }
+    .screen{
+      display:none;
+      font-size:18px;
+      line-height:1.6;
+      animation:fadeIn .5s ease;
+    }
+    .screen.active{display:block}
+
+    .nav-btn{
+      margin-top:22px;
+      display:inline-block;
+      padding:10px 16px;
+      border-radius:8px;
+      background:var(--accent);
+      color:#fff;
+      cursor:pointer;
+      font-weight:600;
+      box-shadow:0 4px 8px rgba(0,0,0,0.12);
+      transition:background .2s;
+      user-select:none;
+    }
+    .nav-btn:hover{background:#e05586}
+
+    .link-box{
+      display:inline-block;
+      margin-top:22px;
+      padding:12px 16px;
+      border-radius:10px;
+      border:1px solid rgba(0,0,0,0.06);
+      background:linear-gradient(180deg,#fff,#fff0);
+      box-shadow:0 4px 8px rgba(0,0,0,0.04);
+      cursor:pointer;
+      color:var(--accent);
+      font-weight:600;
+    }
+    .reveal{
+      margin-top:18px;
+      padding:16px 18px;
+      border-radius:10px;
+      background:#fff7fb;
+      border:1px solid rgba(255,107,154,0.12);
+      display:none;
+      font-weight:600;
+    }
+
+    .final-img{
+      margin-top:18px;
+      max-width:100%;
+      border-radius:10px;
+      display:block;
+    }
+
+    .infinite-text{
+      font-size:10px;
+      margin-top:6px;
+      overflow:hidden;
+      white-space:nowrap;
+    }
+
+    @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="screen active" id="s1">
+      <p>“Eu sei que esse desenho pode parecer meio bobo mas eu fiquei um bom tempo tentando até chegar nesse resultado…. É o melhor presente que eu poderia te dar como seu amigo. Sei que o que você mais ama é servir nesse ministério que te reflete tanto. Espero que seja uma boa forma de lembrar de mim mas também de lembrar da luz que você é. Guarde ele com carinho, abraços.</p>
+      <div class="nav-btn" onclick="nextScreen(2)">➜</div>
+    </div>
+
+    <div class="screen" id="s2">
+      <p>E talvez você tenha lido isso e pensado “carambolas ele não vai falar nada sobre a gente?”</p>
+      <div class="nav-btn" onclick="nextScreen(3)">➜</div>
+    </div>
+
+    <div class="screen" id="s3">
+      <p>Na verdade eu não tenho nada para falar… estou um tanto quanto decepcionado e irritado com você, talvez pudéssemos conversar sobre isso, mas acho que não compensa. Enfim, a ideia era eu te mostrar a playlist que eu tinha feito kakakakakak, os filmes que mais representam tudo o que aconteceu e te pedir pra assistir, as músicas que ocupavam a minha cabeça e tudo mais. Enfim, poderia fazer disso o melhor texto possível, mas acho que eu já coloquei intensidade demais na gente, risos, risos, risos. 😶‍🌫️ ”</p>
+      <div class="nav-btn" onclick="nextScreen(4)">➜</div>
+    </div>
+
+    <div class="screen" id="s4">
+      <div class="link-box" id="fakeLink">clique aqui para ver aquele site bobo que eu criei pra você</div>
+      <div class="reveal" id="reveal">achou mesmo que eu te mostraria o site assim? Não foi hoje, né? talvez em algum dia. Abraços ❤️</div>
+      <div class="nav-btn" id="toLastBtn" style="display:none" onclick="nextScreen(5)">➜</div>
+    </div>
+
+    <div class="screen" id="s5">
+      <img src="presente.jpg" class="final-img" alt="">
+      <div class="infinite-text">lalalalalalalala ler mais lalalalalalalala ler mais lalalalalalalala ler mais lalalalalalalala ler mais lalalalalalalala ler mais ...</div>
+    </div>
+  </main>
+
+  <script>
+    let current=1;
+    function nextScreen(n){
+      document.getElementById("s"+current).classList.remove("active");
+      document.getElementById("s"+n).classList.add("active");
+      current=n;
+    }
+
+    const fakeLink = document.getElementById('fakeLink');
+    const reveal = document.getElementById('reveal');
+    const toLastBtn = document.getElementById('toLastBtn');
+
+    fakeLink.addEventListener('click', ()=>{
+      reveal.style.display='block';
+      toLastBtn.style.display='inline-block';
+    });
+  </script>
+</body>
+</html>
